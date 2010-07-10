@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<title>jQuery notification plugin demo</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="src/jquery.notify.js"></script>
+	<link href="jquery.notify.css" type="text/css" rel="Stylesheet" />
+	<style type="text/css">
+	a{font-size:0.8em;}
+	</style>
+</head>
+
+<body>
+<script type="text/javascript">
+		/*Overiding default values for notification options */
+		jQuery.fn.notify.defaults.timeOut = "4000";
+		function addNotification(strPosition)
+		{
+			strStyle = jQuery("input[name=notStyle]:checked").val();
+			jQuery(this).notify({title:'Hello World',message:'This is a notification',position:strPosition,style:strStyle});
+		}
+	</script>
+	<div class="demo">
+		<input type="radio" id="radioDef" name="notStyle" value="default"/><label for="radioDef">Default</label><br/>
+		<input type="radio" id="radioS" name="notStyle" value="success"/><label for="radioS">Success</label><br/>
+		<input type="radio" id="radioF" name="notStyle" value="failure"/><label for="radioF">Fail</label><br/>
+		
+		<a href="javascript:addNotification('top-right')">Add Notification [top-right]</a><br/>
+		<a href="javascript:addNotification('bottom-right');">Add Notification [bottom-right]</a><br/>
+		<a href="javascript:addNotification('bottom-left');">Add Notification [bottom-left]</a><br/>
+	</div>
+</body>
+</html>

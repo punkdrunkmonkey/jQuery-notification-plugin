@@ -1,0 +1,43 @@
+/*
+ *  jQuery notification plugin style sheet
+ *  By Aditya Rao 
+ *  punkdrunkmonkey@gmail.com
+ */
+
+/* basic notification style */
+.notification{
+				width:25%;
+				height:auto;
+				font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
+                font-size:10px;
+                text-align:left;
+                padding:10px;
+                -moz-border-radius:6px 6px 6px 6px;
+                -webkit-border-radius: 6px;
+		     }
+/* Styling for the Notification's title*/
+.notification #title{
+						font-size:12px;
+						font-weight:bold;
+						clear:right;
+				    }
+				    
+/* Styles Defination. 
+ * styles defined here can be used for the notification style option.
+ */				    
+.default{
+			background-color:#000000;
+            border:1px solid #000000;
+            color:#FFFFFF;
+		}
+.success{
+			background-color:#DFF2BF;
+            border:1px solid #4F8A10;
+            color:#4F8A10;
+		}
+.failure{
+			background-color:#FFBABA;
+            border:1px solid  #D8000C;
+            color:#D8000C;
+		}
+
