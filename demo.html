@@ -16,15 +16,15 @@
 <body>
 <script type="text/javascript">
 		/*Overiding default values for notification options */
-		jQuery.fn.notify.defaults.timeOut = "4000";
+		jQuery.fn.notify.defaults.timeOut = "6000";
 		function addNotification(strPosition)
 		{
 			strStyle = jQuery("input[name=notStyle]:checked").val();
-			jQuery(this).notify({title:'Hello World',message:'This is a notification',position:strPosition,style:strStyle});
+			jQuery().notify({title:'Hello World',message:'This is a notification.',position:strPosition,style:strStyle});
 		}
 	</script>
 	<div class="demo">
-		<input type="radio" id="radioDef" name="notStyle" value="default"/><label for="radioDef">Default</label><br/>
+		<input type="radio" id="radioDef" name="notStyle" value="default" checked /><label for="radioDef">Default</label><br/>
 		<input type="radio" id="radioS" name="notStyle" value="success"/><label for="radioS">Success</label><br/>
 		<input type="radio" id="radioF" name="notStyle" value="failure"/><label for="radioF">Fail</label><br/>
 		

@@ -14,12 +14,12 @@ jQuery.fn.notify = function(options) {
 				
 				/* Getting default options */
 				var aOpts = jQuery.extend({},jQuery.fn.notify.defaults,options);
-				
-				/* Creating the notification element */
+					
+				/* Creating the new notification element */
 				oNotification = document.createElement('div');
 				oNotification.setAttribute('name','notificationDiv');
 				
-				/* Creating the notification's title */
+				/* Creating the new notification's title */
 				if(aOpts.title != '')
 				{
 					nTitle = document.createTextNode(aOpts.title);
@@ -27,7 +27,7 @@ jQuery.fn.notify = function(options) {
 					oTitle.setAttribute('id', 'title');
 					oTitle.appendChild(nTitle);
 				
-				/* Appending title to the notification */
+				/* Appending title to the new notification */
 				oNotification.appendChild(oTitle);
 				
 				/* break between title and message */
@@ -38,18 +38,18 @@ jQuery.fn.notify = function(options) {
 				
 				
 				
-				/* Creating the notification's message */
+				/* Creating the new notification's message */
 				nMessage = document.createTextNode(aOpts.message);
 				
 				/* Appending message to the notification */
 				oNotification.appendChild(nMessage);
 				
-				/* Set appearence for the notification bubble */
+				/* Set appearence for the new notification */
 				oNotification.className = "notification "+ aOpts.style;
 				oNotification.style.display = "none";
 				oNotification.style.zIndex = "9999";
 				
-				/* Calculate and set the position of the notification */
+				/* Calculate and set the position of the new notification */
 				oNotification.style.position = "absolute";
 				aPos = aOpts.position.split("-");
 				sVPos = aPos[0];
@@ -80,18 +80,22 @@ jQuery.fn.notify = function(options) {
 					console.error(hErr);
 			    }
 				
-				/* Render notification */			
+				//alert(aNotificationQueue.length);
 				document.body.appendChild(oNotification);
 				jQuery(oNotification).fadeIn("slow");
-				setTimeout("jQuery(oNotification).fadeOut('slow',function(){jQuery(oNotification).remove();});",aOpts.timeOut);
 				
+				/* handle current notifications on screen */
+				jQuery('div[name=notificationDiv]').each(function(){
+					jQuery(this).delay(aOpts.timeOut);
+					jQuery(this).fadeOut('slow',function(){jQuery(this).remove();}).delay(aOpts.timeOut);
+				});
 			}
 			
 jQuery.fn.notify.defaults = {
-				title:'',			 // Title of the notification.
-				message: '',		// message to be shown.
+				title:'',			 	 // Title of the notification.
+				message: '',			// message to be shown.
 				position: 'top-right', // position on screen.
 				style: 'default',	  // style to apply.
-				timeOut: '5000'		//	if not sticky , duration (in milliseconds) to remain on the screen.
+				timeOut: '5000'		 //	duration (in milliseconds) to remain on the screen.
 			};
 	})(jQuery)
