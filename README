@@ -1,0 +1,61 @@
+jQuery Notification Plugin
+A simple Ubuntu like notification plugin.
+By Aditya Rao
+punkdrunkmonkey@gmail.com
+
+|--------------------------------------------------------------------------|
+| This source file is free software, under either the GPL v2 license or a  |  
+| BSD style license, as supplied with this software.                       |
+| 									   |
+| This source file is distributed in the hope that it will be useful, but  |
+| WITHOUT ANY WARRANTY; without even the implied warranty of 		   |
+| MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	           	   |
+|--------------------------------------------------------------------------| 
+
+
+------------
+REQUIREMENTS
+------------
+JQuery 1.4.2
+
+-----
+USAGE
+-----
+jQuery().notify({title:'Notification Title',message:'Notification message.'});
+
+-------
+OPTIONS
+-------
+
+title - Title of the notification.
+	Default : ''
+
+message - Message of the notification.
+	  Default : ''
+ 				
+position - notification's position on the screen.
+	   must be in the format vertical-horizontal.
+	   possible values: 'top-right','top-left','bottom-left','bottom-right'.
+	   Default : 'top-right'
+
+style - css style to apply. styles are defined in jquery.notify.css
+	Default : default
+
+timeOut - duration (in milliseconds) to remain on the screen.
+	  Default : 5000 milliseconds.
+
+------------------------------------------------------------
+OVERRIDE DEFAULT OPTION SETTINGS / SET GLOBAL OPTION SETTINGS
+------------------------------------------------------------
+
+If you want to override default settings or set default settings accross your web 
+application, you can do so in the following way.
+
+jQuery.fn.notify.defaults.optionName = optionValue;
+
+eg.
+
+jQuery.fn.notify.defaults.timeOut = "6000";
+
+This sets the default notification timeout to 6000 milliseconds for all notifications
+unless specfically overriden in the notification's timeout option.
