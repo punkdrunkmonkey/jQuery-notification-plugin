@@ -1,101 +1,98 @@
-/*
- * 			jQuery Notification Plugin
- *
- *  		A simple Ubuntu like notification plugin.
- * 			
- * 			By Aditya Rao
- * 
- * 			punkdrunkmonkey@gmail.com
+/* jQuery Notification Plugin
+ * A simple Ubuntu like notification plugin.
+ * By Aditya Rao
+ * punkdrunkmonkey@gmail.com
  */
-
-(function($) {
-		
-jQuery.fn.notify = function(options) {
-				
-				/* Getting default options */
-				var aOpts = jQuery.extend({},jQuery.fn.notify.defaults,options);
-					
-				/* Creating the new notification element */
+(function($){
+	jQuery.fn.notify = function(options){
+		var aOpts = jQuery.extend({},jQuery.fn.notify.defaults,options);
+		aPos = aOpts.position.split("-");
+		sVPos = aPos[0];
+		sHPos = aPos[1];
+		if((sVPos != 'top' && sVPos != 'bottom') || (sHPos != 'left' && sHPos != 'right')){
+			debug("Illegal parameter for Vertical and/or Horizontal position for notification.");
+		}else{
+				iVPosition = "2%";
+				sNotificationName = sVPos+"_notificationDiv";
+				oLatestNotification = jQuery('div[name='+sNotificationName+']:last');
+				if(oLatestNotification.length > 0){
+					if(sVPos == "top"){
+						iVPosition = oLatestNotification.offset().top + oLatestNotification.outerHeight() + 5 + "px";
+					}else{
+						iVPosition = (oLatestNotification.offset().top - oLatestNotification.outerHeight() - 5) + "px";
+					}
+				}
+			
 				oNotification = document.createElement('div');
-				oNotification.setAttribute('name','notificationDiv');
+				oNotification.setAttribute('name',sNotificationName);
 				
-				/* Creating the new notification's title */
-				if(aOpts.title != '')
-				{
+				oNotificationIcon = document.createElement('div');
+				oNotificationIcon.setAttribute('id','icon');
+				oNotificationIcon.style.float = "left";
+				
+				oNotificationText = document.createElement('div');
+				oNotificationText.setAttribute('id','text');
+				oNotificationText.style.width = "100%";
+				oNotificationText.style.float = "right";
+				
+				if(aOpts.title !=''){
+					oNotificationTitle = document.createElement('div');
+					oNotificationTitle.style.width = "auto";
 					nTitle = document.createTextNode(aOpts.title);
 					oTitle = document.createElement('span');
 					oTitle.setAttribute('id', 'title');
 					oTitle.appendChild(nTitle);
-				
-				/* Appending title to the new notification */
-				oNotification.appendChild(oTitle);
-				
-				/* break between title and message */
-				oBrk = document.createElement('br');
-				oNotification.appendChild(oBrk);
-				
+					oNotificationTitle.appendChild(oTitle);
+					oNotificationText.appendChild(oNotificationTitle);
 				}
 				
+				oNotificationMessage = document.createElement('div');
+				oNotificationMessage.style.width = "auto";
+				oNotificationMessage.innerHTML = aOpts.message;
+				oNotificationText.appendChild(oNotificationMessage);
 				
+				oNotification.appendChild(oNotificationIcon);
+				oNotification.appendChild(oNotificationText);
 				
-				/* Creating the new notification's message */
-				nMessage = document.createTextNode(aOpts.message);
-				
-				/* Appending message to the notification */
-				oNotification.appendChild(nMessage);
-				
-				/* Set appearence for the new notification */
 				oNotification.className = "notification "+ aOpts.style;
+				oNotification.style.position = "absolute";
 				oNotification.style.display = "none";
 				oNotification.style.zIndex = "9999";
 				
-				/* Calculate and set the position of the new notification */
-				oNotification.style.position = "absolute";
-				aPos = aOpts.position.split("-");
-				sVPos = aPos[0];
-				sHPos = aPos[1];
-				
-				try{
-				if(sVPos == "top"){
-						oNotification.style.top = "2%";
-					}else if(sVPos == "bottom"){
-						 oNotification.style.bottom = "2%";
-						}else{
-								throw "Illegal parameter for vertical position.";
-							}
-				}catch(vErr)
-				{
-					console.error(vErr);
-				}
-				try{
-				if(sHPos == "right"){
-					 oNotification.style.right = "1%";
-					}else if(sHPos == "left") {
-							oNotification.style.left = "1%";
-						}else{
-									throw "Illegal parameter for horizontal position.";
-							}
-			   }catch(hErr)
-			   {
-					console.error(hErr);
-			    }
-				
-				//alert(aNotificationQueue.length);
 				document.body.appendChild(oNotification);
 				jQuery(oNotification).fadeIn("slow");
 				
-				/* handle current notifications on screen */
-				jQuery('div[name=notificationDiv]').each(function(){
+				if(sVPos == "top"){
+					oNotification.style.top = iVPosition;
+				}else{
+					if(iVPosition != "2%"){
+						oNotification.style.top = iVPosition;
+					}else{
+						oNotification.style.bottom = iVPosition;
+					}
+				}
+				if(sHPos == "left"){
+					oNotification.style.left = "1%";
+				}else{
+					oNotification.style.right = "1%";
+				}
+				
+				jQuery('div[name='+sNotificationName+']').each(function(){
 					jQuery(this).delay(aOpts.timeOut);
-					jQuery(this).fadeOut('slow',function(){jQuery(this).remove();}).delay(aOpts.timeOut);
+					jQuery(this).fadeOut(aOpts.timeOut,function(){jQuery(this).remove();}).delay(aOpts.timeOut);
 				});
 			}
-			
-jQuery.fn.notify.defaults = {
-				title:'',			 	 // Title of the notification.
-				message: '',			// message to be shown.
-				position: 'top-right', // position on screen.
-				style: 'default',	  // style to apply.
-				timeOut: '5000'		 //	duration (in milliseconds) to remain on the screen.
-			};
-	})(jQuery)
+	}
+	jQuery.fn.notify.defaults = {
+		title:'',			/* notification's title		*/
+		message:'',			/* notification's message	*/
+		position:'top-right',		/* notification's position	*/
+		style:'default',		/* notification's style		*/
+		timeOut:'5000'			/* notification's appearance duration(in milliseconds)*/
+	};
+	function debug(msg){
+		if (window.console && window.console.error){
+			window.console.error(msg);
+		}
+	}
+})(jQuery)
