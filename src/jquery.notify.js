@@ -25,6 +25,12 @@
 			
             oNotification = document.createElement('div');
             oNotification.setAttribute('name',sNotificationName);
+            
+            if(aOpts.sticky == true)
+            {
+				oNotification.setAttribute('id','stickyNotification');
+				jQuery(oNotification).click(function(){jQuery(this).fadeOut(aOpts.timeOut,function(){jQuery(this).remove()});});
+			}
 				
             oNotificationText = document.createElement('div');
             oNotificationText.setAttribute('id','text');
@@ -81,7 +87,7 @@
                 oNotification.style.right = "1%";
             }
 				
-            jQuery('div[name='+sNotificationName+']').each(function(){
+            jQuery("div[name="+sNotificationName+"]:not('#stickyNotification')").each(function(){
                 jQuery(this).delay(aOpts.timeOut);
                 jQuery(this).fadeOut(aOpts.timeOut,function(){
                     jQuery(this).remove();
@@ -95,7 +101,8 @@
         icon:'',			/* notifications's icon		*/
         position:'top-right',		/* notification's position	*/
         style:'default',		/* notification's style		*/
-        timeOut:'5000'			/* notification's appearance duration(in milliseconds)*/
+        timeOut:'5000',			/* notification's appearance duration(in milliseconds)*/
+        sticky:false			/* if notification is sticky or not.*/
     };
     function debug(msg){
         if (window.console && window.console.error){

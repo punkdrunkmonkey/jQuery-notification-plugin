@@ -18,18 +18,18 @@
 <script type="text/javascript">
 		/*Overiding default values for notification options */
 		jQuery.fn.notify.defaults.timeOut = "6000";
-		function addNotification(strPosition)
+		function addNotification(strPosition,boolSticky)
 		{
 			strStyle = jQuery("input[name=notStyle]:checked").val();
 			if(strStyle == "twitter")
 			{
-					 jQuery().notify({title:'Hello World',icon:'http://www.syracuse.com/flags/icons/twitter_icon.jpg',message:'This is a <i><b>notification</b></i>.',position:strPosition,style:strStyle});
+					 jQuery().notify({title:'Hello World',icon:'http://www.syracuse.com/flags/icons/twitter_icon.jpg',message:'This is a <i><b>tweet</b></i>.',position:strPosition,style:strStyle,sticky:boolSticky});
 			}else{
-					jQuery().notify({title:'Hello World',message:'This is a <i><b>notification</b></i>.',position:strPosition,style:strStyle});
+					jQuery().notify({title:'Hello World',message:'This is a <i><b>notification</b></i>.',position:strPosition,style:strStyle,sticky:boolSticky});
 				}
 		}
 	</script>
-	<div class="demo" style="position:absolute;top:40%;left:40%;border:1px solid #A0A0A0;padding:20px;background-color:#EFEFEF;-moz-border-radius:6px;-webkit-border-radius:6px;width:200px;">
+	<div class="demo" style="position:absolute;top:40%;left:40%;border:1px solid #A0A0A0;padding:20px;background-color:#EFEFEF;-moz-border-radius:6px;-webkit-border-radius:6px;width:250px;">
 		<fieldset style="border:1px solid #A0A0A0;background-color:#EFEFEF;-moz-border-radius:6px;-webkit-border-radius: 6px;">
 		<legend style="background-color:#A0A0A0;color:#FFFFFF;border:2px solid #A0A0A0;-moz-border-radius:6px;-webkit-border-radius: 6px;">Styles</legend>
 		<input type="radio" id="radioDef" name="notStyle" value="default" checked /><label for="radioDef">Default</label><br/>
@@ -38,8 +38,11 @@
 		<input type="radio" id="radioF" name="notStyle" value="twitter"/><label for="radioF">Tweet</label><br/>
 		</fieldset>
 		
-		<a href="javascript:addNotification('top-right')">Add Notification [top-right]</a><br/>
-		<a href="javascript:addNotification('bottom-left');">Add Notification [bottom-left]</a><br/>
+		<a href="javascript:addNotification('top-right',false)">Add Notification [top-right]</a><br/>
+		<a href="javascript:addNotification('bottom-left',false);">Add Notification [bottom-left]</a><br/>
+		<a href="javascript:addNotification('top-right',true)">Add Sticky Notification [top-right]</a><br/>
+		<a href="javascript:addNotification('bottom-left',true);">Add Sticky Notification [bottom-left]</a><br/>
+		
 	</div>
 </body>
 </html>
