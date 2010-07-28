@@ -13,7 +13,9 @@
                 text-align:left;
                 padding:10px;
                 -moz-border-radius:6px 6px 6px 6px;
+                -moz-box-shadow:0 0 4px #000000;
                 -webkit-border-radius: 6px;
+                -webkit-box-shadow:0 0 4px #000000;
                 }
 /* Styling for the Notification's title*/
 .notification #title{
