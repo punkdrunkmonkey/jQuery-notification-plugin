@@ -14,13 +14,19 @@
                 padding:10px;
                 -moz-border-radius:6px 6px 6px 6px;
                 -webkit-border-radius: 6px;
-                
-		     }
+                }
 /* Styling for the Notification's title*/
 .notification #title{
 						font-size:12px;
 						font-weight:bold;
 				    }
+#icon{
+		background-image:url('http://www.indiamike.com/india/customavatars/avatar2863_0.gif');
+		width:48px;
+		height:48px;
+		margin-right:20px;
+		float:left;
+	}
 				    
 /* Styles Defination. 
  * styles defined here can be used for the notification style option.
@@ -30,18 +36,38 @@
             border:1px solid #000000;
             color:#FFFFFF;
 		}
+.default #icon{
+				background-image:url('http://www.indiamike.com/india/customavatars/avatar2863_0.gif');
+			}
 .success{
 			background-color:#DFF2BF;
             border:1px solid #4F8A10;
             color:#4F8A10;
 		}
+.success #icon{
+			width:48px;
+			height:48px;
+			background-image:url('http://213.151.175.10/Tlstandem_mp3/demo/images/correct.png');
+}
+
 .failure{
 			background-color:#FFD1D1;
             border:1px solid  #D8000C;
             color:#D8000C;
 		}
+.failure #icon{
+			width:48px;
+			height:48px;
+			background-image:url('http://jewellerysearch.com/images/button_cancel.gif');
+}
 .twitter{
 			background-color:#DDEEF6;
             border:1px solid  #1E90FF;
             color:#1E90FF;
 		}
+.twitter #icon{
+		width:48px;
+		height:48px;
+		margin-right:20px;
+		float:left;
+}

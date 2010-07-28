@@ -21,10 +21,15 @@
 		function addNotification(strPosition)
 		{
 			strStyle = jQuery("input[name=notStyle]:checked").val();
-			jQuery().notify({title:'Hello World',message:'This is a <i><b>notification</b></i>.',position:strPosition,style:strStyle});
+			if(strStyle == "twitter")
+			{
+					 jQuery().notify({title:'Hello World',icon:'http://www.syracuse.com/flags/icons/twitter_icon.jpg',message:'This is a <i><b>notification</b></i>.',position:strPosition,style:strStyle});
+			}else{
+					jQuery().notify({title:'Hello World',message:'This is a <i><b>notification</b></i>.',position:strPosition,style:strStyle});
+				}
 		}
 	</script>
-	<div class="demo" style="position:absolute;top:40%;left:40%;border:1px solid #A0A0A0;padding:20px;background-color:#EFEFEF;-moz-border-radius:6px;-webkit-border-radius: 6px;">
+	<div class="demo" style="position:absolute;top:40%;left:40%;border:1px solid #A0A0A0;padding:20px;background-color:#EFEFEF;-moz-border-radius:6px;-webkit-border-radius:6px;width:200px;">
 		<fieldset style="border:1px solid #A0A0A0;background-color:#EFEFEF;-moz-border-radius:6px;-webkit-border-radius: 6px;">
 		<legend style="background-color:#A0A0A0;color:#FFFFFF;border:2px solid #A0A0A0;-moz-border-radius:6px;-webkit-border-radius: 6px;">Styles</legend>
 		<input type="radio" id="radioDef" name="notStyle" value="default" checked /><label for="radioDef">Default</label><br/>

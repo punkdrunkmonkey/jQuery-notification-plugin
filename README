@@ -44,6 +44,10 @@ style - css style to apply. styles are defined in jquery.notify.css
 timeOut - duration (in milliseconds) to remain on the screen.
 	  Default : 5000 milliseconds.
 
+icon - url of the icon for the notification. pass as null for no icon.
+	   pass '' to use default icon.
+	    
+
 ------------------------------------------------------------
 OVERRIDE DEFAULT OPTION SETTINGS / SET GLOBAL OPTION SETTINGS
 ------------------------------------------------------------
