@@ -23,7 +23,7 @@
 						font-weight:bold;
 				    }
 #icon{
-		background-image:url('http://www.indiamike.com/india/customavatars/avatar2863_0.gif');
+		background-image:url('images/monkey.gif');
 		width:48px;
 		height:48px;
 		margin-right:20px;
@@ -39,7 +39,7 @@
             color:#FFFFFF;
 		}
 .default #icon{
-				background-image:url('http://www.indiamike.com/india/customavatars/avatar2863_0.gif');
+				background-image:url('images/monkey.gif');
 			}
 .success{
 			background-color:#DFF2BF;
@@ -49,7 +49,7 @@
 .success #icon{
 			width:48px;
 			height:48px;
-			background-image:url('http://213.151.175.10/Tlstandem_mp3/demo/images/correct.png');
+			background-image:url('images/correct.png');
 }
 
 .failure{
@@ -60,7 +60,7 @@
 .failure #icon{
 			width:48px;
 			height:48px;
-			background-image:url('http://jewellerysearch.com/images/button_cancel.gif');
+			background-image:url('images/button_cancel.gif');
 }
 .twitter{
 			background-color:#DDEEF6;
